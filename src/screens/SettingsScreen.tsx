@@ -1,4 +1,5 @@
-import { ChevronLeft, ChevronRight, User, Shield, Bell, Crown, Zap, LogOut, HelpCircle, Trash2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, User, Shield, Bell, Crown, Zap, LogOut, HelpCircle, Trash2, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/hooks/useTheme";
 
 interface SettingsScreenProps {
   onBack: () => void;
@@ -6,6 +7,7 @@ interface SettingsScreenProps {
 }
 
 const SettingsScreen = ({ onBack, onNavigate }: SettingsScreenProps) => {
+  const { theme, toggleTheme } = useTheme();
   const sections = [
     {
       title: "Account",
@@ -69,6 +71,20 @@ const SettingsScreen = ({ onBack, onNavigate }: SettingsScreenProps) => {
           </div>
         </div>
       ))}
+
+      {/* Theme toggle */}
+      <div className="glass rounded-2xl px-4 py-3.5 flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
+          {theme === "dark" ? <Moon size={18} className="text-muted-foreground" /> : <Sun size={18} className="text-muted-foreground" />}
+          <span className="text-sm font-medium">Dark Mode</span>
+        </div>
+        <button
+          onClick={toggleTheme}
+          className={`w-12 h-7 rounded-full relative transition-colors ${theme === "dark" ? "bg-primary" : "bg-muted"}`}
+        >
+          <span className={`absolute top-0.5 w-6 h-6 rounded-full bg-white shadow transition-transform ${theme === "dark" ? "left-[calc(100%-1.625rem)]" : "left-0.5"}`} />
+        </button>
+      </div>
 
       <div className="space-y-3 mt-4">
         <button className="w-full glass text-destructive py-3.5 rounded-2xl text-sm font-medium flex items-center justify-center gap-2">
