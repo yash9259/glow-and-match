@@ -1,13 +1,19 @@
-import { ChevronLeft, ChevronRight, User, Shield, Bell, Crown, Zap, LogOut, HelpCircle, Trash2, Sun, Moon } from "lucide-react";
-import { useTheme } from "@/hooks/useTheme";
+import { ChevronLeft, ChevronRight, User, Shield, Bell, Crown, Zap, LogOut, HelpCircle, Trash2, Sun, Moon, Smartphone } from "lucide-react";
+import { useTheme, type Theme } from "@/hooks/useTheme";
 
 interface SettingsScreenProps {
   onBack: () => void;
   onNavigate: (screen: string) => void;
 }
 
+const themeOptions: { value: Theme; label: string; icon: typeof Sun; desc: string }[] = [
+  { value: "light", label: "Light", icon: Sun, desc: "Always light" },
+  { value: "dark", label: "Dark", icon: Moon, desc: "Always dark" },
+  { value: "system", label: "Auto", icon: Smartphone, desc: "Match device" },
+];
+
 const SettingsScreen = ({ onBack, onNavigate }: SettingsScreenProps) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const sections = [
     {
       title: "Account",
@@ -28,7 +34,7 @@ const SettingsScreen = ({ onBack, onNavigate }: SettingsScreenProps) => {
   ];
 
   return (
-    <div className="mobile-container px-6 py-4 safe-bottom">
+    <div className="mobile-container px-6 py-4 overflow-y-auto scrollbar-hide safe-bottom">
       <div className="flex items-center gap-3 mb-6">
         <button onClick={onBack} className="w-10 h-10 glass rounded-full flex items-center justify-center">
           <ChevronLeft size={20} />
@@ -45,7 +51,8 @@ const SettingsScreen = ({ onBack, onNavigate }: SettingsScreenProps) => {
         />
         <div>
           <h2 className="font-bold">Alex, 25</h2>
-          <p className="text-sm text-muted-foreground">Free Plan</p>
+          <p className="text-sm text-muted-foreground">San Francisco, CA</p>
+          <p className="text-xs text-muted-foreground">Free Plan</p>
         </div>
       </div>
 
@@ -72,18 +79,29 @@ const SettingsScreen = ({ onBack, onNavigate }: SettingsScreenProps) => {
         </div>
       ))}
 
-      {/* Theme toggle */}
-      <div className="glass rounded-2xl px-4 py-3.5 flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          {theme === "dark" ? <Moon size={18} className="text-muted-foreground" /> : <Sun size={18} className="text-muted-foreground" />}
-          <span className="text-sm font-medium">Dark Mode</span>
+      {/* Theme selector */}
+      <div className="mb-6">
+        <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Appearance</h3>
+        <div className="glass rounded-2xl p-1.5 flex gap-1">
+          {themeOptions.map((opt) => {
+            const active = theme === opt.value;
+            return (
+              <button
+                key={opt.value}
+                onClick={() => setTheme(opt.value)}
+                className={`flex-1 flex flex-col items-center gap-1.5 py-3 rounded-xl text-xs font-medium transition-all ${
+                  active
+                    ? "bg-primary text-primary-foreground shadow-lg"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                }`}
+              >
+                <opt.icon size={18} />
+                <span>{opt.label}</span>
+                <span className={`text-[10px] ${active ? "text-primary-foreground/70" : "text-muted-foreground"}`}>{opt.desc}</span>
+              </button>
+            );
+          })}
         </div>
-        <button
-          onClick={toggleTheme}
-          className={`w-12 h-7 rounded-full relative transition-colors ${theme === "dark" ? "bg-primary" : "bg-muted"}`}
-        >
-          <span className={`absolute top-0.5 w-6 h-6 rounded-full bg-white shadow transition-transform ${theme === "dark" ? "left-[calc(100%-1.625rem)]" : "left-0.5"}`} />
-        </button>
       </div>
 
       <div className="space-y-3 mt-4">
