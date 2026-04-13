@@ -59,6 +59,7 @@ const Index = () => {
           <ProfileViewScreen
             onBack={() => setScreen("home")}
             onChat={() => openChat(1)}
+            onNavigate={(s) => setScreen(s as Screen)}
           />
         );
       case "edit-profile":
