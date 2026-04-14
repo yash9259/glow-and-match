@@ -16,15 +16,17 @@ import BoostScreen from "@/screens/BoostScreen";
 import SettingsScreen from "@/screens/SettingsScreen";
 import ReportScreen from "@/screens/ReportScreen";
 import LikesScreen from "@/screens/LikesScreen";
+import AIMatchScreen from "@/screens/AIMatchScreen";
+import AISupportScreen from "@/screens/AISupportScreen";
 import BottomNav from "@/components/BottomNav";
 
 type Screen =
   | "splash" | "onboarding" | "login" | "profile-setup"
   | "home" | "likes" | "chat-list" | "chat" | "profile-view"
   | "edit-profile" | "notifications" | "premium" | "boost"
-  | "settings" | "report";
+  | "settings" | "report" | "ai-matches" | "ai-support";
 
-const mainScreens = ["home", "likes", "chat-list", "notifications", "profile-view"];
+const mainScreens = ["home", "likes", "chat-list", "notifications", "profile-view", "ai-matches"];
 
 const Index = () => {
   const [screen, setScreen] = useState<Screen>("splash");
@@ -74,6 +76,10 @@ const Index = () => {
         return <SettingsScreen onBack={() => setScreen("profile-view")} onNavigate={(s) => setScreen(s as Screen)} />;
       case "report":
         return <ReportScreen onBack={() => setScreen("profile-view")} />;
+      case "ai-matches":
+        return <AIMatchScreen onBack={() => setScreen("home")} onChat={openChat} />;
+      case "ai-support":
+        return <AISupportScreen onBack={() => setScreen("settings")} />;
       default:
         return null;
     }
