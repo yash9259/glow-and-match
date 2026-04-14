@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, User, Shield, Bell, Crown, Zap, LogOut, HelpCircle, Trash2, Sun, Moon, Smartphone } from "lucide-react";
+import { ChevronLeft, ChevronRight, User, Shield, Bell, Crown, Zap, LogOut, HelpCircle, Trash2, Sun, Moon, Smartphone, Bot } from "lucide-react";
 import { useTheme, type Theme } from "@/hooks/useTheme";
 
 interface SettingsScreenProps {
@@ -29,6 +29,7 @@ const SettingsScreen = ({ onBack, onNavigate }: SettingsScreenProps) => {
         { icon: Shield, label: "Privacy Settings", screen: "" },
         { icon: Bell, label: "Notifications", screen: "" },
         { icon: HelpCircle, label: "Help & Support", screen: "" },
+        { icon: Bot, label: "AI Assistant", screen: "ai-support" },
       ],
     },
   ];
