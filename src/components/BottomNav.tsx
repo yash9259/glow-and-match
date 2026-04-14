@@ -1,4 +1,4 @@
-import { Heart, MessageCircle, User, Flame, Bell } from "lucide-react";
+import { Heart, MessageCircle, User, Flame, Bell, Brain } from "lucide-react";
 
 interface BottomNavProps {
   active: string;
@@ -8,8 +8,8 @@ interface BottomNavProps {
 const navItems = [
   { id: "home", icon: Flame, label: "Discover" },
   { id: "likes", icon: Heart, label: "Likes" },
+  { id: "ai-matches", icon: Brain, label: "AI Picks" },
   { id: "chat-list", icon: MessageCircle, label: "Chat" },
-  { id: "notifications", icon: Bell, label: "Alerts" },
   { id: "profile-view", icon: User, label: "Profile" },
 ];
 
@@ -33,6 +33,9 @@ const BottomNav = ({ active, onNavigate }: BottomNavProps) => {
                 <item.icon size={20} className={isActive ? "text-primary-foreground" : ""} />
                 {item.id === "chat-list" && (
                   <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent rounded-full text-[10px] flex items-center justify-center font-bold text-accent-foreground">3</span>
+                )}
+                {item.id === "ai-matches" && (
+                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-primary rounded-full text-[10px] flex items-center justify-center font-bold text-primary-foreground">✦</span>
                 )}
               </div>
               <span className="text-[10px] font-medium">{item.label}</span>
