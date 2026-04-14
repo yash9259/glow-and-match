@@ -164,4 +164,68 @@ export const aiReplies = [
   "I'd love to hear more about that!",
   "When are you free to meet up?",
   "Haha, you're so funny! 😂",
+  "What's your favorite spot in the city?",
+  "Tell me more about yourself 💬",
+  "I love that! We should try it together",
+  "Any plans for the weekend? 🎉",
+  "You seem really cool! 😄",
+  "What kind of music are you into? 🎵",
+];
+
+export const aiContextualReplies: Record<string, string[]> = {
+  greeting: [
+    "Hey! Great to match with you! 👋",
+    "Hi there! Your profile caught my eye 😊",
+    "Hello! How's your day going?",
+  ],
+  compliment: [
+    "Aw thank you! That's so sweet 🥰",
+    "You're too kind! Right back at you 😊",
+    "That really made my day! 💕",
+  ],
+  plans: [
+    "I'm free this Saturday! How about brunch? 🥐",
+    "Let's grab coffee sometime this week! ☕",
+    "There's a great new restaurant downtown, wanna try it?",
+  ],
+  interests: [
+    "I'm really into hiking and photography 📸",
+    "I love trying new restaurants and cooking 🍳",
+    "I'm a huge music festival fan! 🎶",
+  ],
+  flirty: [
+    "You're making me blush over here 😊",
+    "Is it just me or do we have great chemistry? ✨",
+    "I think we'd have an amazing time together 💫",
+  ],
+  funny: [
+    "Haha okay that was actually hilarious 😂",
+    "Stop, you're gonna make me laugh in public 🤣",
+    "10/10 humor, I'm impressed 😆",
+  ],
+  general: [
+    "That's really interesting! Tell me more 🤔",
+    "I totally agree with you on that!",
+    "Wow, I didn't know that! Thanks for sharing 😊",
+    "That's awesome! I feel like we have a lot in common",
+    "You have great taste! 👌",
+  ],
+};
+
+export const aiBotResponses = [
+  "I've been thinking about that too! What do you think?",
+  "That's such a great point. I really admire how you think about things 😊",
+  "Honestly, I was hoping you'd say that! 💕",
+  "You always know the right thing to say 😄",
+  "I love how easy it is to talk to you!",
+  "Same here! We really are on the same wavelength ✨",
+  "Haha you're hilarious! I can't stop smiling 😂",
+  "That's so cool! We should definitely do that together sometime",
+  "I'm really enjoying getting to know you 💬",
+  "You're making my day so much better right now 🥰",
+  "Oh wow, I didn't expect that! Tell me more 🤔",
+  "I feel like we could talk for hours and never get bored",
+  "That reminds me of something funny that happened to me...",
+  "You have such great energy! I love it 🌟",
+  "Okay but seriously, when are we finally meeting up? 😏",
 ];
